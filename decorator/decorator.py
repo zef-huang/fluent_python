@@ -11,13 +11,13 @@ def training_decorator(func):
     
     return wrapper
 
-
+@training_decorator
 def eat_something(something):
     print("you can eat %s now" % something)
 
 
 
 if __name__ == '__main__':
-    eat_something = training_decorator(eat_something)
+    # eat_something = training_decorator(eat_something)
     eat_something('two eggs')
     
