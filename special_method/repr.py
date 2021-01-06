@@ -15,7 +15,7 @@ class Test():
 
 
 # ------------------------------------------------------
-# 2.构建一个类，使其具有序列器的功
+# 2.构建一个类，使其具有序列器的功能
 # ------------------------------------------------------
 class DuckSeqence():
     '''只要实现了 len 和 getitem 的魔法方法即可
@@ -29,10 +29,30 @@ class DuckSeqence():
     def __getitem__(self, i):
         return self.array[i]
 
+    
+
+# ------------------------------------------------------
+# 3.构建一个类，使其具有切片的功能
+# ------------------------------------------------------
+
+class MySlice():
+    def __init__(self, array):
+        self.array = array
+
+    def __len__(self):
+        return len(self.array)
+
+    def __getitem__(self, index):
+        # 记录对象类型，使用切片后的序列重新实例化此类
+        cls = type(self)
+        if isinstance(index, slice):
+            return cls(self.array[index]).array
+        else:
+            return self.array[index]
 
 if __name__ == '__main__':
-    array = [2, 6, 2, 7, 3]
-    client = DuckSeqence(array)
-    print(client[3])
-    
+    client = MySlice([1,2,3,4])
+    print(client[1:3])
+    print(tuple(client))
+
 
