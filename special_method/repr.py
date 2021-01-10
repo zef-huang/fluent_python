@@ -50,6 +50,10 @@ class MySlice():
         else:
             return self.array[index]
 
+
+# __getitem__ 方法一旦实现，就可以使用遍历，in 语法，切片
+# 这是因为 python 利用它，传入从 0 开始的整数索引，尝试迭代对象
+
 if __name__ == '__main__':
     client = MySlice([1,2,3,4])
     print(client[1:3])

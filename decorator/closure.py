@@ -14,6 +14,9 @@ avg = make_avg() # 外部函数使用了内部 num_list 的作用域，所以 nu
 avg(12)
 avg(18)
 
+del avg
+
+avg = make_avg()
 print('cell_contents:', avg.__closure__[0].cell_contents)
 avg(25)
 
