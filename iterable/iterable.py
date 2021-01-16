@@ -12,7 +12,7 @@ s = 'andigsodighjdf'
 # print(next(s_iter))
 
 # --------------------------------------------------------------------
-# 1. 手动实现一个迭代器
+# 1. 手动实现一个迭代器, 结果输出一个 h
 # --------------------------------------------------------------------
 
 class SentenceIterator():
@@ -30,6 +30,24 @@ class SentenceIterator():
         return value
 
 
+# --------------------------------------------------------------------
+# 2. 手动实现一个 yield 生成器
+# --------------------------------------------------------------------
+
+
+class SentenceGen():
+    def __init__(self, sentence):
+        self.sentence = sentence
+
+    def __iter__(self):
+        '''生成器函数, 每次生成一个值
+        '''
+        for i in self.sentence:
+            yield i
+
+
 if __name__ == '__main__':
-    s = SentenceIterator('hello')
-    print(next(s))
+    s = SentenceGen('hello')
+    for i in s:
+        print(i)
+
