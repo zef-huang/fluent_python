@@ -40,14 +40,22 @@ class SentenceGen():
         self.sentence = sentence
 
     def __iter__(self):
-        '''生成器函数, 每次生成一个值
+        '''生成器函数, 每次生成一个值, 和直接 return self 的区别在于，每次返回的是一个生成器
         '''
         for i in self.sentence:
             yield i
 
 
+# --------------------------------------------------------------------
+# 3. 手动实现一个 yield 函数，即生成器函数
+# --------------------------------------------------------------------
+
+def gen_fun():
+    for i in [1,2,3]:
+        yield i
+
 if __name__ == '__main__':
-    s = SentenceGen('hello')
-    for i in s:
-        print(i)
+    g = gen_fun()
+    print(next(g))
+    print(next(g))
 
