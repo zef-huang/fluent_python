@@ -54,8 +54,25 @@ def gen_fun():
     for i in [1,2,3]:
         yield i
 
-if __name__ == '__main__':
-    g = gen_fun()
-    print(next(g))
-    print(next(g))
 
+# --------------------------------------------------------------------
+# 4. 手动实现一个等差生成器函数
+# --------------------------------------------------------------------
+
+def aritprog_gen(begin, step, end=None):
+    forever = False
+    if not end:
+        forever = True
+
+    result = begin
+    yield result
+
+    while forever or result <= end:
+        result = begin + step
+        yield result
+
+
+if __name__ == '__main__':
+    g = aritprog_gen(10, 10, 100)
+    print(next(g))
+    print(next(g))
