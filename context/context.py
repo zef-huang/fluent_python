@@ -14,13 +14,18 @@ def reverse_output():
         std_write(text[::-1])
 
     sys.stdout.write = reverse_write
-    yield 
+    try:
+        yield
+    except Exception as e:
+        print(e)
+
     sys.stdout.write = std_write
 
 
 if __name__ == '__main__':
     with reverse_output() as f:
         print("hello world")
+        print(2/0)
 
     print('hello world')
     
